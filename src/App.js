@@ -1,25 +1,51 @@
-import logo from './logo.svg';
+
+import { createBrowserRouter, Outlet } from 'react-router-dom';
 import './App.css';
+import ComfortLevel from './ComfortLevel';
+import DescriptionSelection from './DescriptionSelection';
+import InterestSection from './InterestSection';
+import RightPlace from './RightPlace';
+import YourWay from './YourWay';
+import EndScreen from './EndScreen';
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div >
+   <Outlet/>
+    
     </div>
   );
 }
+
+export const appRouter =  createBrowserRouter([
+  {
+    path:'/',
+    element:<App/>,
+    children:[
+      {
+        path:'/',
+        element:<DescriptionSelection/>
+      },
+      {
+        path:'/InterestSection',
+        element:<InterestSection/>
+      },
+      {
+        path:'/InterestSection/RightPlace',
+        element:<RightPlace/>
+      },{
+        path:'/InterestSection/RightPlace/ComfortLevel',
+        element:<ComfortLevel/>
+      },{
+        path:'/InterestSection/RightPlace/ComfortLevel/YourWay',
+        element:<YourWay/>
+      },{
+        path:'/InterestSection/RightPlace/ComfortLevel/YourWay/EndScreen',
+        element:<EndScreen/>
+      }
+    ]
+  }
+])
 
 export default App;
